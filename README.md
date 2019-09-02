@@ -2,7 +2,7 @@
 
 ## The purpose of this project:
 
-The purpose of this project is to create a lay of the land on academic articles that references a given key word.
+The purpose of this project is to create a lay of the land on academic articles that reference a given key word.
 Using the Crossref citation database, keyword_network aims to build a network graph of articles that reference
 a given keyword, allowing researchers to see the current state of academic thought on a specific subject.
 
