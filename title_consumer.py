@@ -5,7 +5,7 @@
 
 
 # this is the consumer script
-# it needs KafkaConsumer, and most of the classes
+
 from bs4 import BeautifulSoup
 from fuzzywuzzy import fuzz
 import json
