@@ -15,19 +15,7 @@ with open(path) as file:
 
     for article in json_file:
         doi_sum += len(article['reference_doi_og'])
-        title_sum += len(article['reference_titles_og'])
-        
-    #     for key,value in article.items():
-
-    #         if key == 'reference_doi_og':
-    #             for ref in value:
-    #                 doi_sum += 1
-            
-    #         if key == 'reference_titles_og':
-    #             for ref in value:
-    #                 title_sum += 1
-
-            
+        title_sum += len(article['reference_titles_og'])         
 
     print(doi_sum)
     print(title_sum)
