@@ -14,7 +14,7 @@ def ref_cleaner(path):
     
     return clean_articles
 
-clean_list = ref_cleaner("/home/alok/Documents/citizen_lab/python_scripts/literature_review/kafka/fake_news_jul_13.json")
+clean_list = ref_cleaner("path to cleaned data")
 
 #this is the graph making part
 
