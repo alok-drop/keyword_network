@@ -30,7 +30,7 @@ class Production():
                 sleep(40)
 
 
-producer_object = Production('/home/alok/Documents/citizen_lab/python_scripts/json_dumps/fake_news_titles_update.json')
+producer_object = Production('path to json')
 producer_object.send_json()
 
 
