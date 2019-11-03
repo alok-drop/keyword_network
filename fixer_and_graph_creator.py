@@ -16,6 +16,8 @@ def ref_cleaner(path):
 
 clean_list = ref_cleaner("/home/alok/Documents/citizen_lab/python_scripts/literature_review/kafka/fake_news_jul_13.json")
 
+with open('fixed_citations.json', 'w') as file:
+    json.dump(clean_list, file)
 #this is the graph making part
 
 fn_graph = nx.DiGraph()
