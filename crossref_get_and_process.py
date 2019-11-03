@@ -7,7 +7,11 @@ import json
 import requests
 
 title_tag = 'fake news'
+<<<<<<< HEAD
 query = f"\nhttps://api.crossref.org/works?query.bibliographic='{title_tag}'&filter=from-pub-date:2008&rows=1000&mailto=alokherath@gmail.com" 
+=======
+query = f"\nhttps://api.crossref.org/works?query.title='{title_tag}'&filter=from-pub-date:2008&rows=1000&mailto=##" 
+>>>>>>> 4b2f56543cff1ab79d3c1d8cc29f9c3345fcac98
 
 # turning response into a parsable json
 response = requests.get(query)
@@ -24,8 +28,7 @@ with open('fake_news_crossref_results_1.json', 'w') as file:
 import heapq
 import json
 
-file_list = ["/home/alok/Documents/citizen_lab/python_scripts/json_dumps/fake_news_crossref_results_1.json", 
-"/home/alok/Documents/citizen_lab/python_scripts/json_dumps/fake_news_crossref_results_2.json"]
+file_list = ["List of files"]
 
 final_article_list = []
 
@@ -73,7 +76,7 @@ print(final_article_list)
 # In[9]:
 
 
-with open('/home/alok/Documents/citizen_lab/python_scripts/json_dumps/fake_news_titles_update.json', 'w') as outfile:
+with open('##outfile', 'w') as outfile:
     json.dump(final_article_list, outfile)
 
 

@@ -32,3 +32,5 @@ class LiteratureTest:
 
 test_unit = LiteratureTest("./fixed_citations.json")
 random_sample = test_unit.random_sample(5)
+
+json.dumps(random_sample)
