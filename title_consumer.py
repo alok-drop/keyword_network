@@ -143,14 +143,10 @@ class Title_Consumer():
             with open(f"{./{self.session_name}/self.session_name}_failed.json", 'a') as outfile3:
                 json.dump(failed_structure, outfile3)
 
-<<<<<<< HEAD
 """change selenium google search to use full title, not only google cleaned title! You are Losing
 too many results. To confirm, see how many nodes you get in gephi
 
 """
 
 consumer_object = Title_Consumer("November 3")
-=======
-consumer_object = Title_Consumer()
->>>>>>> 4b2f56543cff1ab79d3c1d8cc29f9c3345fcac98
 consumer_object.search_function()

@@ -7,11 +7,9 @@ import json
 import requests
 
 title_tag = 'fake news'
-<<<<<<< HEAD
-query = f"\nhttps://api.crossref.org/works?query.bibliographic='{title_tag}'&filter=from-pub-date:2008&rows=1000&mailto=alokherath@gmail.com" 
-=======
-query = f"\nhttps://api.crossref.org/works?query.title='{title_tag}'&filter=from-pub-date:2008&rows=1000&mailto=##" 
->>>>>>> 4b2f56543cff1ab79d3c1d8cc29f9c3345fcac98
+email = ""
+query = f"\nhttps://api.crossref.org/works?query.bibliographic='{title_tag}'&filter=from-pub-date:2008&rows=1000&mailto={email}" 
+
 
 # turning response into a parsable json
 response = requests.get(query)
