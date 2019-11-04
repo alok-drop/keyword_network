@@ -142,7 +142,7 @@ class Title_Consumer():
             with open(f"./{self.session_name}/{self.session_name}_urls.json", 'a') as outfile2:
                 json.dump(successful_url_structure, outfile2)
 
-            with open(f"{./{self.session_name}/self.session_name}_failed.json", 'a') as outfile3:
+            with open(f"./{self.session_name}/{self.session_name}_failed.json", 'a') as outfile3:
                 json.dump(failed_structure, outfile3)
 
 """change selenium google search to use full title, not only google cleaned title! You are Losing
