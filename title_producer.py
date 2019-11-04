@@ -23,10 +23,8 @@ class Production():
          with open(self.path) as file:
             json_file = (json.load(file))
             for message in json_file:
-                # sleep_time = len(message['reference_doi_og']) + len(message['reference_titles_og'])
                 self.producer.send('nov_3_test_1', value=message)
                 print(message)
-                
                 sleep(40)
 
 

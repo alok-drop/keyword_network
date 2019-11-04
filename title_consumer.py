@@ -33,7 +33,9 @@ class Title_Consumer():
             value_deserializer=lambda x: json.loads(x.decode('utf-8')))
         self.driver = webdriver.Firefox()
         self.session_name = str(session_name).replace(' ', '_')
-        os.mkdir(f'./{self.session_name}')
+        
+        if not os.path.exists(f"./{self.session_name}"):
+            os.mkdir(f"./{self.session_name}")
 
     def search_function(self):
         for message in self.consumer:
