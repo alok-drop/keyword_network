@@ -23,12 +23,17 @@ class Production():
          with open(self.path) as file:
             json_file = (json.load(file))
             for message in json_file:
-                self.producer.send('nov_3_test_1', value=message)
+                self.producer.send('nov_4_test_1', value=message)
                 print(message)
-                sleep(40)
+
+                if len(message['reference_doi_og']) + len(message['reference_titles_og']) == 0:
+                    sleep(2)
+                
+                else:
+                    sleep(40)
 
 
-producer_object = Production('path to json')
+producer_object = Production('november3_crossref_results/fake_news_nov3_combined.json')
 producer_object.send_json()
 
 
