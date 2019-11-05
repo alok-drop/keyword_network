@@ -131,10 +131,10 @@ class Title_Consumer():
                                     failed_structure['failed_title_fragments'].append(title)
 
                             time.sleep(random.uniform(1.00, 5.00))
-                        except (IndexError, NoSuchElementException, KeyError) as e:
+                        except (IndexError, NoSuchElementException, KeyError, ValueError) as e:
                             pass
 
-                print(structure['reference_urls'])
+                print(structure)
 
             with open(f"./{self.session_name}/{self.session_name}_results.json", 'a') as outfile:
                 json.dump(structure, outfile)
