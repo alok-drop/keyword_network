@@ -7,6 +7,7 @@ import json
 import heapq
 import requests
 import os
+import re
 
 class CrossrefSearch:
 
@@ -66,11 +67,12 @@ class CrossrefSearch:
                                         structure["reference_doi_og"].append(ref["DOI"])
                     
                                     if "unstructured" and not "DOI" in ref:
-                                        two_long_list = heapq.nlargest(2, (ref["unstructured"].replace("http://", '').split('.')), key=len)
+                                        no_url = re.sub(r'(https|http)?:\/\/(\w|\.|\/|\?|\=|\&|\%|\-)*\b', '', ref['unstructured'])
+                                        no_white_space = ' '.join(no_url.split())
+                                        two_long_list = heapq.nlargest(2, (no_white_space.split('.')), key=len)
                                         correct = [elt for elt in two_long_list if elt.count('/')==min([elt.count('/') 
                                                         for elt in two_long_list])]
                                         structure["reference_titles_og"].append(' '.join(correct))
-                                        
                                 
                                     if "DOI" and "unstructured" in ref:
                                         structure["reference_doi_og"].append(ref["DOI"])
