@@ -24,7 +24,7 @@ class Title_Consumer():
 
     def __init__(self, session_name):
 
-        self.consumer = KafkaConsumer('nov_4_test_1',
+        self.consumer = KafkaConsumer('nov_5_test_1',
             bootstrap_servers=['localhost:9092'],
             auto_offset_reset='latest',
             enable_auto_commit=False,
@@ -131,7 +131,7 @@ class Title_Consumer():
                                     failed_structure['failed_title_fragments'].append(title)
 
                             time.sleep(random.uniform(1.00, 5.00))
-                        except (IndexError, NoSuchElementException, KeyError, ValueError) as e:
+                        except (IndexError, NoSuchElementException, KeyError, ValueError, TypeError) as e:
                             pass
 
                 print(structure)
@@ -150,5 +150,5 @@ too many results. To confirm, see how many nodes you get in gephi
 
 """
 
-consumer_object = Title_Consumer("November 4")
+consumer_object = Title_Consumer("November 5 post")
 consumer_object.search_function()
