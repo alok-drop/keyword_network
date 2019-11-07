@@ -13,7 +13,7 @@ of the egregious citation offenders.
 
 ## Code that is involved:
 
-- crossref_get_and_process.py queries the crossref database for a given keyword and returns a JSON of citations to parse
+- tools.py contains a number of tools required to make the Crossref API query, clean and combine the data, and create a network graph from the title_consumer.py results.
 - titles_producer.py parses the json — cleaning lazy citations from the json — and publishes article titles 
 to a Kafka message queue. Sometimes only partial article titles can be extracted from the citation, which have to be processed 
 in the next step.
