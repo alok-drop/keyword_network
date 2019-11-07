@@ -8,7 +8,7 @@ a given keyword, allowing researchers to see the current state of academic thoug
 
 ## Problems this project faced:
 
-The Crossref database has a wealth of citation information, but that information is user submitted, and sometimes, highly inconsistent. To overcome this, significant data-cleaning had to take place before any literature network map is generated. I initially struggled with coming up with a solution that was good enough at parsing out inconsistent citations from the API response. After linking together several algorithms, I came up with a solution that used NLP and other methods to remove most
+The Crossref database has a wealth of citation information, but that information is user submitted, and sometimes, highly inconsistent. To overcome this, significant data-cleaning had to take place before any literature network map is generated. I initially struggled with coming up with a solution that was good enough at parsing out inconsistent citations from the API response. After linking together several algorithms, I came up with a solution that used fuzzy wuzzy and regex methods to remove most
 of the egregious citation offenders.
 
 ## Code that is involved:
