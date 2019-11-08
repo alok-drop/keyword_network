@@ -59,6 +59,7 @@ class CrossrefSearch:
             data_str = json.dumps(response.json())
             crossref_json = json.loads(data_str)
 
+           
             try:
                 with open(f"./{self.session_name}/{output_name}.json", 'w') as file:
                     json.dump(crossref_json, file)
@@ -66,11 +67,16 @@ class CrossrefSearch:
             except FileNotFoundError:
                 with open(f"./{output_name}.json", 'w') as file:
                     json.dump(crossref_json, file)
-        
+
+            if crossref_json['message']['total-results'] < row_count:
+                print(f"Row count is greater than results available. Total available results are {crossref_json['message']['total-results']}")
+
+            return data_str
+
         else:
             raise Exception('Row_count has to be an integer less than or equal to 1000. Offset_count has to be an integer ')
 
-        return crossref_json
+        
     
     def clean_combine_data(self, list_of_files):
         
