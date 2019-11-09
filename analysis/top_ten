@@ -15,7 +15,7 @@ Top 10 Influential Articles:
 Methodology:
 
 - Use filter functionality on Gephi to filter the dataset based on in-degree
-- This sorts the dataset by articles with the highest citation count
+	- This sorts the dataset by articles with the highest citation count
 
 Initial Analysis:
 
