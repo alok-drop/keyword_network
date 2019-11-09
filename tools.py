@@ -59,7 +59,6 @@ class CrossrefSearch:
             data_str = json.dumps(response.json())
             crossref_json = json.loads(data_str)
 
-           
             try:
                 with open(f"./{self.session_name}/{output_name}.json", 'w') as file:
                     json.dump(crossref_json, file)
@@ -171,11 +170,13 @@ class GraphCreate:
                     if key == 'reference_doi':
                         if len(value) > 0:
                             for element in value:
+                                self.fn_graph.add_node(element, type="reference_doi")
                                 self.fn_graph.add_edge(node, element, type="reference_doi")
                     
                     if key == 'reference_urls':
                         if len(value) > 0:
                             for element in value:
+                                self.fn_graph.add_node(element, type="reference_url")
                                 self.fn_graph.add_edge(node, element, type="reference_url")
 
         if output_path.get('output_path'):       
