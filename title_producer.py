@@ -13,8 +13,9 @@ import json
 from time import sleep
 
 class Production():
-    def __init__(self,path):
+    def __init__(self, path, topic):
         self.path = path
+        self.topic = topic
         self.producer = KafkaProducer(bootstrap_servers=['localhost:9092'],
                                      value_serializer=lambda x:
                                      json.dumps(x).encode('utf-8'))
@@ -23,7 +24,7 @@ class Production():
          with open(self.path) as file:
             json_file = (json.load(file))
             for message in json_file:
-                self.producer.send('nov_5_test_1', value=message)
+                self.producer.send(self.topic, value=message)
                 print(message)
 
                 if len(message['reference_doi_og']) + len(message['reference_titles_og']) == 0:
@@ -31,10 +32,5 @@ class Production():
                 
                 else:
                     sleep(40)
-
-
-producer_object = Production('november3_crossref_results/fake_news_nov4_combined.json')
-producer_object.send_json()
-
 
 # In[ ]:

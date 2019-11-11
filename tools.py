@@ -50,34 +50,35 @@ class CrossrefSearch:
                     os.mkdir(f"./{self.session_name}")
         
     
-    def make_query(self, title, row_count, offset_count, output_name, email):
+    def make_query(self, title, row_count, offset_count, email, **output):
         
         if int(row_count) <= 1000:
             query = f"\nhttps://api.crossref.org/works?query.bibliographic='{title}'&filter=from-pub-date:2008&rows={row_count}&offset={offset_count}&sort=relevance&order=desc&mailto={email}" 
             response = requests.get(query)
-            print("response received\n")
+            print("Response received\n")
             data_str = json.dumps(response.json())
             crossref_json = json.loads(data_str)
 
-            try:
-                with open(f"./{self.session_name}/{output_name}.json", 'w') as file:
-                    json.dump(crossref_json, file)
-            
-            except FileNotFoundError:
-                with open(f"./{output_name}.json", 'w') as file:
-                    json.dump(crossref_json, file)
-
             if crossref_json['message']['total-results'] < row_count:
                 print(f"Row count is greater than results available. Total available results are {crossref_json['message']['total-results']}")
+            
+            if output.get('output_name'):
+                try:
+                    with open(f"./{self.session_name}/{output['output_name']}.json", 'w') as file:
+                        json.dump(crossref_json, file)
+                
+                except (FileNotFoundError, AttributeError) as e:
+                    with open(f"./{output['output_name']}.json", 'w') as file:
+                        json.dump(crossref_json, file)
 
-            return data_str
+            return response.json()
 
         else:
             raise Exception('Row_count has to be an integer less than or equal to 1000. Offset_count has to be an integer ')
 
         
     
-    def clean_combine_data(self, list_of_files):
+    def clean_combine_data(self, list_of_files, **output):
         
         # Clean: Crossref API data is messy. This script first parses malformed citation data to remove unsuitable 
         # data that hinders the accuracy of subsequent steps.
@@ -125,6 +126,15 @@ class CrossrefSearch:
                                     next
                     
                     final_article_list.append(structure)
+        
+        if output.get('output_name'):
+            try:
+                with open(f"./{self.session_name}/{output['output_name']}_clean.json", 'w') as file:
+                    json.dump(final_article_list, file)
+            
+            except (FileNotFoundError, AttributeError) as e:
+                with open(f"./{output['output_name']}_clean.json", 'w') as file:
+                    json.dump(final_article_list, file)
         
         return final_article_list
 

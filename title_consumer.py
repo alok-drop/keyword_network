@@ -22,21 +22,23 @@ import time
 
 class Title_Consumer():
 
-    def __init__(self, session_name):
+    def __init__(self, session_name, topic):
 
-        self.consumer = KafkaConsumer('nov_5_test_1',
+        self.session_name = str(session_name).replace(' ', '_')
+        if not os.path.exists(f"./{self.session_name}"):
+            os.mkdir(f"./{self.session_name}")
+
+        self.topic = topic 
+        self.driver = webdriver.Firefox()
+        self.consumer = KafkaConsumer(self.topic,
             bootstrap_servers=['localhost:9092'],
             auto_offset_reset='latest',
             enable_auto_commit=False,
             group_id='my-group',
             max_poll_interval_ms=100000,
             value_deserializer=lambda x: json.loads(x.decode('utf-8')))
-        self.driver = webdriver.Firefox()
-        self.session_name = str(session_name).replace(' ', '_')
-        
-        if not os.path.exists(f"./{self.session_name}"):
-            os.mkdir(f"./{self.session_name}")
 
+        
     def search_function(self):
         for message in self.consumer:
             print("\n producer message received \n")
@@ -145,10 +147,4 @@ class Title_Consumer():
             with open(f"./{self.session_name}/{self.session_name}_failed.json", 'a') as outfile3:
                 json.dump(failed_structure, outfile3)
 
-"""change selenium google search to use full title, not only google cleaned title! You are Losing
-too many results. To confirm, see how many nodes you get in gephi
 
-"""
-
-consumer_object = Title_Consumer("November 5 post")
-consumer_object.search_function()
