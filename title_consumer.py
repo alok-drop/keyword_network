@@ -41,7 +41,7 @@ class Title_Consumer():
         
     def search_function(self):
         for message in self.consumer:
-            print("\n producer message received \n")
+            print("\n Producer message received \n")
             
             #populated with successful citation resolutions
             structure = {
@@ -98,9 +98,9 @@ class Title_Consumer():
                             
                             #pass cleaned title to crossref database to try and find doi match
                             query = f"\nhttps://api.crossref.org/works?query.bibliographic='{title_tag}'&rows=3&offset=0&select=DOI,title&mailto=alokherath@gmail.com" #change to string formatting
-                            print(query, '\nhas been sent to crossref api')
+                            print(query, '\n has been sent to Crossref API')
                             response = requests.get(query)
-                            print("response received\n")
+                            print("\nResponse received\n")
                             data_str = json.dumps(response.json())
                             crossref_json = json.loads(data_str)
 
@@ -126,10 +126,10 @@ class Title_Consumer():
                                     url = url_tags[0].find('a')['href'] #finds first url
                                     structure['reference_urls'].append(url)
                                     successful_url_structure['resolved_titles'].append({str(url):str(title)})
-                                    print("url chosen instead!", url, "\n")
+                                    print("\nURL chosen instead!", url, "\n")
                                 
                                 else:
-                                    print("title cannot be found!\n")
+                                    print("\nTitle cannot be found!\n")
                                     failed_structure['failed_title_fragments'].append(title)
 
                             time.sleep(random.uniform(1.00, 5.00))
