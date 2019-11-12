@@ -7,3 +7,4 @@ Next steps in conducting analysis:
 2) How many articles are in each cluster? Is the topic dominated by a certain
 discipline?
 
+3) How do the disciplines and network change with additional search terms?
