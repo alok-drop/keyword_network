@@ -43,23 +43,28 @@ class Title_Consumer():
         for message in self.consumer:
             print("\n Producer message received \n")
             
-            #populated with successful citation resolutions
+            # populated with successful citation resolutions
             structure = {
                             'article_doi' : 'DOI',
                             'reference_doi' : [],
                             'reference_urls' : []
                                     }
 
-            #populated with failed citation title fragments. Saved for logging and verification purposes.
+            # populated with failed citation title fragments. Saved for logging and verification purposes.
             failed_structure = {
                                     'article_doi': 'DOI',
                                     'failed_title_fragments': []
                                         }
-            #populated with successful citation title fragments to url resolutions. Saved for verification purposes.
+            # populated with successful citation title fragments to url resolutions. 
             successful_url_structure = {
                                             'article_doi': 'DOI',
                                             'resolved_titles': []
                                                 }
+            # populated with successful citation title fragments to doi resolutions.
+            succesful_doi_structure = {
+                                        'article_doi': 'DOI',
+                                        'resolved_doi': []
+                                            }
 
 
             for key, value_ in message.value.items():
@@ -69,6 +74,7 @@ class Title_Consumer():
                     structure['article_doi'] = value_
                     failed_structure['article_doi'] = value_
                     successful_url_structure['article_doi'] = value_
+                    succesful_doi_structure['article_doi'] = value_
 
                 # populating structure with reference dois if they exist
                 if key == 'reference_doi_og':
@@ -118,6 +124,7 @@ class Title_Consumer():
                             if title_list:
                                 most_likely_title = max(title_list, key = itemgetter(1))[0]
                                 structure['reference_doi'].append(article['DOI'])
+                                succesful_doi_structure['resolved_doi'].append({most_likely_title:article['DOI']})
                                 print("crossref chosen! ", most_likely_title, article['DOI'] + "\n")
 
                             else:
@@ -146,5 +153,8 @@ class Title_Consumer():
 
             with open(f"./{self.session_name}/{self.session_name}_failed.json", 'a') as outfile3:
                 json.dump(failed_structure, outfile3)
+            
+            with open(f"./{self.session_name}/{self.session_name}_doi.json", 'a') as outfile4:
+                json.dump(succesful_doi_structure, outfile4)
 
 
