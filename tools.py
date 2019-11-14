@@ -112,6 +112,8 @@ class CrossrefSearch:
                                         structure["reference_doi_og"].append(ref["DOI"])
                     
                                     if "unstructured" and not "DOI" in ref:
+                                        # Cleaning the unstructured crossref citation, into a best approximation at an article title.
+                                        # This approximation is then validated in the consumer script to resolve a matched article.
                                         no_url = re.sub(r'(https|http)?:\/\/(\w|\.|\/|\?|\=|\&|\%|\-)*\b', '', ref['unstructured'])
                                         no_white_space = ' '.join(no_url.split())
                                         two_long_list = heapq.nlargest(2, (no_white_space.split('.')), key=len)
