@@ -117,6 +117,8 @@ class CrossrefSearch:
                                         no_url = re.sub(r'(https|http)?:\/\/(\w|\.|\/|\?|\=|\&|\%|\-)*\b', '', ref['unstructured'])
                                         no_white_space = ' '.join(no_url.split())
                                         two_long_list = heapq.nlargest(2, (no_white_space.split('.')), key=len)
+
+                                        # This part of the script is obsolete. Replace with search operators split..
                                         correct = [elt for elt in two_long_list if elt.count('/')==min([elt.count('/') 
                                                         for elt in two_long_list])]
                                         structure["reference_titles_og"].append(' '.join(correct))
