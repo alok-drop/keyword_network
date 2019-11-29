@@ -1,4 +1,4 @@
-## What are the top ten most cited articles within fake news litrature?
+### What are the top ten most cited articles within fake news litrature?
 
 - 10.1257/jep.31.2.211: Social Media and Fake News in the 2016 Election (Alcott)
 - 10.1126/science.aap9559: The spread of true and false news online (Vosoughi)
@@ -17,7 +17,7 @@
 - Use filter functionality on Gephi to filter the dataset based on in-degree
 	- This sorts the dataset by articles with the highest citation count
 
-Initial Analysis:
+### Initial Analysis:
 
 - Majority of most cited articles are academic with the notable exception of the Silverman article.
 - The top ten data set is split into two major clusters: social science and computational work. This trend is replicated in the overall network.
