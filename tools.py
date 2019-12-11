@@ -227,7 +227,7 @@ class LiteratureTest:
         
         return (print(
                 f"Total number of citation DOIs {doi_sum}\n", 
-                f"Total number of citation references {title_sum}"
+                f"Total number of citation references {title_sum}\n"
                 f"Number of articles with no citations {zero_sum}")
                     )
     
