@@ -1,6 +1,6 @@
-## Initial analysis
+## Initial Analysis
 
-- The data for "disinformation" returned from the Crossref API is alot smaller
+- The data for "disinformation" returned from the Crossref API is a lot smaller
 than the data returned by Crossref for "Fake News"
 
 - As a result, only around 600 articles make up the "disinformation" dataset
