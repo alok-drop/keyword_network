@@ -216,14 +216,19 @@ class LiteratureTest:
         # Provides a high-level summary of the data.
         doi_sum = 0
         title_sum = 0
+        zero_sum = 0
 
         for article in self.file_object:
             doi_sum += len(article['reference_doi'])
             title_sum += len(article['reference_urls'])
+            
+            if len(article['reference_doi']) and len(article['reference_urls']):
+                zero_sum += 1
         
         return (print(
                 f"Total number of citation DOIs {doi_sum}\n", 
-                f"Total number of citation references {title_sum}")
+                f"Total number of citation references {title_sum}"
+                f"Number of articles with no citations {zero_sum}")
                     )
     
     def random_sample(self, sample_size, **kwargs):
