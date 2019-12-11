@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import json
 import random
 import csv
@@ -172,8 +174,8 @@ class GraphCreate:
         #create networkx di-graph object
         self.fn_graph = nx.DiGraph()
     
-    def create_graph(self, path_to_list, **output_path):
-        with open(path_to_list, 'r') as file:
+    def create_graph(self, path, **output_path):
+        with open(path, 'r') as file:
             for article in json.load(file):
                 for key, value in article.items():
                     
@@ -206,12 +208,11 @@ class LiteratureTest:
 
     # This class is to support the validation of this methodologies' outputs.
 
-    def __init__(self, path_to_file):
+    def summary(self, path_to_file):
 
         with open(path_to_file) as file:
             self.file_object = json.load(file)
 
-    def summary(self):
         # Provides a high-level summary of the data.
         doi_sum = 0
         title_sum = 0
